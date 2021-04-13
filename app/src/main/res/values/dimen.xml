@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="legacy_ic_toolbar_search_size">15dp</dimen>
+    <dimen name="legacy_toolbar_bg_radius">17dp</dimen>
+    <dimen name="legacy_ic_search_size">24dp</dimen>
+</resources>
