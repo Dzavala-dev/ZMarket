@@ -12,12 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
+    val listaProductos = ArrayList<Producto>()
+    val displayList = ArrayList<Producto>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val listaProductos = ArrayList<Producto>()
-        val displayList = ArrayList<Producto>()
+        val lista = findViewById<ListView>(R.id.lista)
 
         listaProductos.add(Producto("Camara", 22000.0, "Camara ultimo modelo", R.drawable.camara))
         listaProductos.add(Producto("MAC PRO", 15000.0, "16 GB RAM", R.drawable.pc))
@@ -31,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         listaProductos.add(Producto("PC DELL", 15000.0, "16 GB RAM", R.drawable.pc))
 
 
-        val lista = findViewById<ListView>(R.id.lista)
+
         //val searchView = findViewById<SearchView>(R.id.searchView1)
         val adapter = ProductosAdapter(this, listaProductos)
         lista.adapter = adapter
@@ -42,14 +44,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        override fun onCreateOptionsMenu(menu: Menu): Boolean {
+         fun onCreateOptionsMenu(menu: Menu): Boolean {
             menuInflater.inflate(R.menu.menu, menu)
 
             val searchItem = menu.findItem(R.id.searchView1)
             if (searchItem != null) {
-                val searchView = (searchItem.actionView as SearchView).also {
+                val searchView = searchItem.actionView as SearchView
 
-                    it.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
                         override fun onQueryTextSubmit(query: String?): Boolean {
                             if (listaProductos.containsAll(listaProductos)) {
@@ -67,7 +69,6 @@ class MainActivity : AppCompatActivity() {
                         }
                     })
                 }
-            }
             return onCreateOptionsMenu(menu)
         }
     }
