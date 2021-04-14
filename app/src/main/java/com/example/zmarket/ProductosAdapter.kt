@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 
-class ProductosAdapter(private val mContext: Context, private val listaProductos: ArrayList<Producto>) : ArrayAdapter<Producto>(mContext, 0, listaProductos) {
+class ProductosAdapter(private val mContext: Context, private val listaProductos: List<Producto>) : ArrayAdapter<Producto>(mContext, 0, listaProductos) {
     @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val layout = LayoutInflater.from(mContext).inflate(R.layout.item_producto,parent,false)
